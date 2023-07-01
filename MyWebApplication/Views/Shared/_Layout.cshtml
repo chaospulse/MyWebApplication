@@ -41,8 +41,6 @@
                         
                         @if(User.IsInRole(SD.Role_Admin))
                         {
-                            
-                        
                             <li class="nav-item dropdown">
                                 <a asp-area="Admin" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Content Managment
@@ -71,12 +69,22 @@
                                 </ul>
                             </li>
                         }
-
+                        @if(HttpContextAccessor.HttpContext.Session.GetInt32(SD.SesionCart) != null) 
+                        {
                             <li class="nav-item">
                                 <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
                                    @await Component.InvokeAsync("ShoppingCart")
                                 </a>
                             </li>
+                        }
+                        else
+                         {
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                   @await Component.InvokeAsync("ShoppingCart")
+                                </a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
