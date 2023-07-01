@@ -19,9 +19,12 @@ namespace PulseModels
 		public string? PostalCode { get; set; }
 		public string? State { get; set; }
 		public int? CompanyId { get; set; }
-        public string? Role { get; set; }
+		
         [ForeignKey("CompanyId")]
         [ValidateNever]
-        public Company Company { get; set; }
-    }
+        public Company? Company { get; set; }
+		
+		[NotMapped]
+		public string Role { get; set; }
+	}
 }

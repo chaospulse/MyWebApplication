@@ -26,12 +26,11 @@ namespace MyWebApplication.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            var _ClaimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = _ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            
-           if(claim.Value != null) // user is logged in
+            var ClaimsIdentity = (ClaimsIdentity)User.Identity;
+			var claim = ClaimsIdentity?.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
+			if (claim != null) // user is logged in
            {  
-               HttpContext.Session.SetInt32(SD.SesionCart, shoppingCartRepositry.GetAll(u => u.ApplicationUserId == claim.Value).Count());
+               HttpContext.Session.SetInt32(SD.SesionCart, shoppingCartRepositry.GetAll(u => u.ApplicationUserId == claim).Count());
            }
             
             IEnumerable<Product> productList = productRepositry.GetAll(IncludeProperties:"Category");
