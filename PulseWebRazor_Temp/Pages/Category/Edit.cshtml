@@ -1,0 +1,36 @@
+﻿@page
+@model PulseWebRazor_Temp.Pages.Category.EditModel
+
+<form method="post">
+	<input asp-for="MyCategories.Id" hidden/>
+	<div class="border border-secondary p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-dark">Edit category</h2>
+			<hr/>
+		</div>
+		
+		<div asp-validation-summary="None"></div>
+	    <div class="mb-3 row p-1">
+		    <label asp-for="MyCategories.Name" class="p-0"></label>
+		    <input asp-for="MyCategories.Name" class="form-control"/>
+			<span asp-validation-for="MyCategories.Name" class="text-danger"></span>
+	    </div>
+		<div class="mb-3 row p-1">
+		    <label asp-for="MyCategories.DisplayOrder" class="p-0"></label>
+		    <input asp-for="MyCategories.DisplayOrder" class="form-control"/>
+			<span asp-validation-for="MyCategories.DisplayOrder" class="text-danger"></span>
+	    </div>
+		
+		<div class="row">
+		    <div class="col-6 col-md-3">
+				<button type="submit" class="btn btn-outline-success form-control">Update</button>
+			</div>
+		    <div class="col-6 col-md-3">
+				<a asp-page="/Category/Index" class="btn btn-outline-info form-control">Back To List</a>
+			</div>
+		</div>
+	</div>
+</form>
+
+			
+			
