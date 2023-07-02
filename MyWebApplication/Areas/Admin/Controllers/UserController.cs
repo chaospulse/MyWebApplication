@@ -94,12 +94,11 @@ namespace MyWebApplication.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        #region AI CALLS
+        #region API CALLS
         [HttpGet]
         public IActionResult GetAll()
         {
             List<ApplicationUser> objUserList = applicationUserRepositry.GetAll(IncludeProperties: "Company").ToList();
-
             foreach (var user in objUserList)
             {
                 user.Role = _userManager.GetRolesAsync(user).GetAwaiter().GetResult().FirstOrDefault();
@@ -113,7 +112,6 @@ namespace MyWebApplication.Areas.Admin.Controllers
             }
             return Json(new { data = objUserList });
         }
-
 
         [HttpPost]
         public IActionResult LockUnlock([FromBody] string id)

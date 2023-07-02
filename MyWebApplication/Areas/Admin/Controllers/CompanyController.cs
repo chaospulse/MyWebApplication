@@ -27,22 +27,17 @@ namespace MyWebApplication.Areas.Admin.Controllers
         public IActionResult Create(int? id)
         {
             if (id == 0 || id == null) //create 
-            {
                 return View(new Company());
-            } 
             else //update
             {
                 Company companyOBJ = companyRepositry.Get(U => U.Id == id);
                 return View(companyOBJ);
             }
         }
-        
         public IActionResult Upsert(int? id)
         {
             if (id ==0 || id == null) //create 
-            {
                 return View(new Company());
-            }
             else //update
             {
                 Company companyOBJ = companyRepositry.Get(U => U.Id == id);
@@ -67,23 +62,17 @@ namespace MyWebApplication.Areas.Admin.Controllers
             if (ModelState.IsValid)
             { 
                 if (companyOBJ.Id == 0)
-                {
                     companyRepositry.Add(companyOBJ);
-                }
                 else
-                {
                     companyRepositry.Update(companyOBJ);
-                }
+                
                 companyRepositry.Save();
                 TempData["Company"] = "Company Created Successfully";
                 return RedirectToAction("Index");
             }
             else
-            {
                 return View(companyOBJ);
-            }
         }
-
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)

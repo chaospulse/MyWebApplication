@@ -1,13 +1,26 @@
-﻿var dataTable;
+﻿console.log('user.js loaded');
+
+var dataTable;
 
 $(document).ready(function ()
 {
+    if ($.fn.DataTable.isDataTable('#userTable'))
+        console.log('table is already initialized');
+    else
+        console.log('table is not initialized');
+        
     loadDataTable();
 });
 
-function loadDataTable() {
-    dataTable = $('#tblData').DataTable({
-        "ajax": { url: '/admin/user/getall' },
+function loadDataTable()
+{
+    dataTable = $('#userTable').DataTable({
+        //"ajax": { url: '/admin/user/getall' },
+        "ajax": {
+            url: '@Url.Action("GetAll", "User", new { area = "Admin" })',
+            "type": "GET",
+            "datatype": "json"
+        },
         "columns": [
             { "data": "name", "width": "15%" },
             { "data": "email", "width": "15%" },
@@ -31,7 +44,7 @@ function loadDataTable() {
                                 </a>
                         </div>
                     `}
-                    else
+                    даelse
                     {
                         return `
                         <div class="text-center">

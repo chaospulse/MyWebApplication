@@ -1,7 +1,6 @@
 ﻿@*-----CODE WITHOUT JAVA SCRIPT-----*@
 
-@model List<PulseModels.Models.ViewModels.RoleManagmentVM>
-
+@*@model List<PulseModels.Models.ViewModels.RoleManagmentVM>
 <div class="card shadow border-0 bg-gradient ml-0 mt-4">
 	<div class="card-header shadow bg-secondary bg-gradient ml-0 py-3">
 	     <div class="row">
@@ -23,25 +22,6 @@
 				     <th></th>
 				 </tr>
 	        </thead>
-			@*foreach (var item in Model.OrderBy(u => u.UserName))
-			{
-				<tr>
-					<td>@item.Name</td>
-					<td>@item.Email</td>
-					<td>@item.PhoneNumber</td>
-					<td>@item.Company</td>
-					<th>@item.Role</th>
-					<td>
-						<div class="w-75 btn-group" role="group">
-						<a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-light mx-1"> 
-						   <i class="bi bi-pencil-square"></i> Edit
-						</a>
-						<a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger mx-1"> 
-						   <i class="bi bi-trash"></i> Delete
-						</a>
-					</div></td>
-				</tr>
-			}*@
 			@foreach (var item in Model)
 			{
 				<tr>
@@ -63,11 +43,11 @@
 			}
       </table>
    </div>
-</div>
+</div>*@
 
 @*-----CODE WITH JAVA SCRIPT-----*@
 
-﻿@*<div class="card shadow border-0 my-4">
+﻿<div class="card shadow border-0 my-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
@@ -76,7 +56,7 @@
         </div>
     </div>
     <div class="card-body p-4">
-        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <table id="userTable" class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -88,10 +68,9 @@
                 </tr>
             </thead>
         </table>
-
     </div>
 </div>
 
 @section Scripts{
     <script src="~/js/user.js"></script>
-}*@
+}
